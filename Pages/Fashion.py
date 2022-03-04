@@ -12,8 +12,9 @@ class Fashion(Base):
         super().__init__(driver)
 
     Fashion  = "//div[text()='Fashion']"
-    footwear = "//a[@class='_6WOcW9 _2-k99T']"
-    Fashion_product_details = "//a[@class='IRpwTa']"
+    #footwear = "//a[normalize-space()='Women T-shirts & Polo T-shirts']"
+    footwear = "//a[@class='_6WOcW9 _2-k99T']"              #WOMEN FASHION CLICK
+    Fashion_product_details = "//a[@class='_2r_T1I']"               #'IRpwTa']
     fashion_add_to_cart = "//button[text()='ADD TO CART']"
     size = "//a[normalize-space()='S']"
     women_hover = "//span[text()='Women']"
@@ -23,18 +24,27 @@ class Fashion(Base):
     My_account = "//div[text()='My Account']"
     wishlist_my = "//a[@href='/wishlist?link=home_wishlist']"
     wishlist_items = "//div[@class='_3hscEA']"
+    #ethnic="html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[4]/a[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[1]/a[3]"
 
 
     def fashion_test(self):
 
+        actions = ActionChains(self.driver)
         fashion = self.driver.find_element(By.XPATH, self.Fashion)
-        action = ActionChains(self.driver)
-        Hover = action.move_to_element(fashion).perform()
+        #women_ethnic = self.driver.find_element(By.XPATH, self.ethnic)
+
+        #-------------trial----------
+        #move to .move to .move to
+        actions.move_to_element(fashion).perform()
+        #actions.move_to_element(women_ethnic).click().perform()
+        print("\n /n \n entered list")
+
         time.sleep(2)
         self.driver.find_element(By.XPATH, self.footwear).click()
         product_details = self.driver.find_elements(By.XPATH, self.Fashion_product_details)
         for i in product_details:
             print(i.text)
+            print("Added to Cart")
             i.click()
             break
         time.sleep(3)

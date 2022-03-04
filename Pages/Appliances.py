@@ -1,9 +1,6 @@
 import time
-
 from selenium.webdriver.common.by import By
-
 from Pages.Base import Base
-
 
 class Appliances(Base):
 

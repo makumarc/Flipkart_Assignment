@@ -4,13 +4,14 @@ from Config.config import TestData
 from Pages.Fashion import Fashion
 from Pages.Home_Page import Home_Page
 from Pages.Login import Login
-
+#from webdriver_manager.chrome import ChromeDriverManager
 
 class wishlist(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
         cls.driver = webdriver.Chrome(executable_path=TestData.Chrome_Executable_Path)
+        #cls.driver = webdriver.Chrome(ChromeDriverManager().install())
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
         cls.driver.get(TestData.Base_Url)
@@ -20,5 +21,6 @@ class wishlist(unittest.TestCase):
         login = Login(self.driver)
         login.login_into_app()
         F = Fashion(self.driver)
-        F.wishlist_check_fashion()
+        F.fashion_test()
+        #F.wishlist_check_fashion()
 
